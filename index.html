@@ -1,122 +1,338 @@
 <div id="lc-app">
-  <div class="lc-header"><h2 class="lc-h">LỊCH CÔNG TÁC</h2></div>
-    <div class="lc-status" data-lc="status" aria-live="polite"></div>
+  <div class="lc-header"><h2 class="lc-h">LỊCH CÔNG TÁC BHS</h2></div>
+  <div class="lc-status" data-lc="status" aria-live="polite"></div>
   <div data-lc="result"></div>
 </div>
 
 <style>
-#lc-app{--p:#00A4D6;--pd:#008FC0;--l:#E8F7FC;--bg:#F8FBFD;--b:#B9E5F5;--t:#333;
-  font-family:"Segoe UI",Roboto,Arial,sans-serif;color:var(--t);background:var(--bg);
-  border:1px solid var(--b);border-radius:12px;padding:20px;max-width:100%;line-height:1.5;box-sizing:border-box}
-#lc-app *{box-sizing:border-box}
-#lc-app .lc-header{border-bottom:3px solid var(--p);padding-bottom:10px;margin-bottom:12px}
-#lc-app .lc-h{margin:0;font-size:24px;font-weight:700;color:var(--pd);letter-spacing:.02em}
-#lc-app .lc-status{margin:8px 0;font-size:14px;color:#555;min-height:20px}
-#lc-app .lc-error{color:#b3261e}
-#lc-app .lc-button{height:36px;padding:0 16px;border:0;border-radius:8px;background:var(--p);color:#fff;font:inherit;font-weight:700;cursor:pointer}
-#lc-app .lc-button:hover{background:var(--pd)}
-#lc-app .lc-title{margin:0;font-size:18px;font-weight:700;color:var(--pd)}
-#lc-app .lc-sub{margin:2px 0 12px;color:#555;font-weight:600}
-#lc-app .lc-wrap{overflow-x:auto;border:1px solid var(--b);border-radius:10px;background:#fff}
-#lc-app .lc-table{width:100%;min-width:980px;border-collapse:collapse;font-size:14px}
-#lc-app .lc-table th{background:var(--l);color:var(--pd);text-align:left;padding:10px;border-bottom:1px solid var(--b);white-space:nowrap}
-#lc-app .lc-table td{padding:10px;border-bottom:1px solid #e3f2f8;vertical-align:top}
-#lc-app .lc-table tr:hover td{filter:brightness(.96)}
-#lc-app .lc-table tr td{background:var(--lc-bg,#fff)}
-#lc-app .lc-table tr.lc-newday td{border-top:2px solid var(--b)}
-#lc-app .lc-nowrap{white-space:nowrap; font-weight: bold;}
-#lc-app .lc-empty{padding:28px;text-align:center;background:#fff;border:1px dashed var(--b);border-radius:10px;color:#555}
-@media (max-width:760px){#lc-app{padding:12px}}
+  #lc-app {
+    --p: #00a4d6;
+    --pd: #008fc0;
+    --l: #e8f7fc;
+    --bg: #f8fbfd;
+    --b: #b9e5f5;
+    --t: #333;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--t);
+    background: var(--bg);
+    border: 1px solid var(--b);
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 100%;
+    line-height: 1.5;
+    box-sizing: border-box;
+  }
+  #lc-app * {
+    box-sizing: border-box;
+  }
+  #lc-app .lc-header {
+    border-bottom: 3px solid var(--p);
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+  }
+  #lc-app .lc-h {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--pd);
+    letter-spacing: 0.02em;
+    text-align: center;
+  }
+  #lc-app .lc-status {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #555;
+    min-height: 20px;
+    text-align: center;
+  }
+  #lc-app .lc-error {
+    color: #b3261e;
+  }
+  #lc-app .lc-button {
+    height: 36px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--p);
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  #lc-app .lc-button:hover {
+    background: var(--pd);
+  }
+  #lc-app .lc-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--pd);
+  }
+  #lc-app .lc-sub {
+    margin: 2px 0 12px;
+    color: #000000;
+    font-weight: 600;
+    font-weight: bold;
+    text-align: center;
+  }
+  #lc-app .lc-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--b);
+    border-radius: 10px;
+    background: #fff;
+  }
+  #lc-app .lc-table {
+    width: 100%;
+    min-width: 980px;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  #lc-app .lc-table th {
+    background: var(--l);
+    color: var(--pd);
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid var(--b);
+    white-space: nowrap;
+  }
+  #lc-app .lc-table td {
+    padding: 10px;
+    border-bottom: 1px solid #e3f2f8;
+    vertical-align: top;
+  }
+  #lc-app .lc-table tr:hover td {
+    filter: brightness(0.96);
+  }
+  #lc-app .lc-table tr td {
+    background: var(--lc-bg, #fff);
+  }
+  #lc-app .lc-table tr.lc-newday td {
+    border-top: 2px solid var(--b);
+  }
+  #lc-app .lc-nowrap {
+    white-space: nowrap;
+    font-weight: bold;
+  }
+  #lc-app .lc-empty {
+    padding: 28px;
+    text-align: center;
+    background: #fff;
+    border: 1px dashed var(--b);
+    border-radius: 10px;
+    color: #555;
+  }
+  @media (max-width: 760px) {
+    #lc-app {
+      padding: 12px;
+    }
+  }
 </style>
 
 <script>
-(function () {
-  'use strict';
-  const LC_CONFIG = {
-    API_URL: "https://script.google.com/macros/s/AKfycbzItjJCnh3jYjfhdX7xChn5vry3ygPjIHU8qIEjj26_4kTcULMLs9NqN4oCX6WakoPU/exec", // URL Web App kết thúc bằng /exec
-    TIMEOUT_MS: 20000
-  };
-  const root = document.getElementById('lc-app');
-  if (!root) return;
-  const $ = k => root.querySelector('[data-lc="' + k + '"]');
-  const ui = { status: $('status'), result: $('result') };
+  (function () {
+    "use strict";
+    const LC_CONFIG = {
+      API_URL:
+        "https://script.google.com/macros/s/AKfycbzItjJCnh3jYjfhdX7xChn5vry3ygPjIHU8qIEjj26_4kTcULMLs9NqN4oCX6WakoPU/exec", // URL Web App kết thúc bằng /exec
+      TIMEOUT_MS: 20000,
+    };
+    const root = document.getElementById("lc-app");
+    if (!root) return;
+    const $ = (k) => root.querySelector('[data-lc="' + k + '"]');
+    const ui = { status: $("status"), result: $("result") };
 
-  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
-  const fmt = iso => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); return m ? m[3] + '/' + m[2] + '/' + m[1] : (iso || ''); };
+    const el = (tag, cls, text) => {
+      const e = document.createElement(tag);
+      if (cls) e.className = cls;
+      if (text != null) e.textContent = text;
+      return e;
+    };
+    const fmt = (iso) => {
+      const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
+      return m ? m[3] + "/" + m[2] + "/" + m[1] : iso || "";
+    };
 
-  // Gọi API qua JSONP (ổn định khi nhúng trong blog, không vướng CORS)
-  window.LichCongTacApp = window.LichCongTacApp || {};
-  const cbs = (window.LichCongTacApp._cb = {});
-  let seq = 0;
-  function api(params) {
-    return new Promise((resolve, reject) => {
-      const name = 'c' + (++seq), s = document.createElement('script');
-      const done = () => { clearTimeout(timer); delete cbs[name]; s.remove(); };
-      const timer = setTimeout(() => { done(); reject(new Error('timeout')); }, LC_CONFIG.TIMEOUT_MS);
-      cbs[name] = res => { done(); res && res.ok ? resolve(res.data) : reject(new Error('api')); };
-      s.onerror = () => { done(); reject(new Error('network')); };
-      const q = new URLSearchParams(Object.assign({}, params, { callback: 'LichCongTacApp._cb.' + name }));
-      s.src = LC_CONFIG.API_URL + (LC_CONFIG.API_URL.indexOf('?') > -1 ? '&' : '?') + q;
-      document.head.appendChild(s);
-    });
-  }
+    // Gọi API qua JSONP (ổn định khi nhúng trong blog, không vướng CORS)
+    window.LichCongTacApp = window.LichCongTacApp || {};
+    const cbs = (window.LichCongTacApp._cb = {});
+    let seq = 0;
+    function api(params) {
+      return new Promise((resolve, reject) => {
+        const name = "c" + ++seq,
+          s = document.createElement("script");
+        const done = () => {
+          clearTimeout(timer);
+          delete cbs[name];
+          s.remove();
+        };
+        const timer = setTimeout(() => {
+          done();
+          reject(new Error("timeout"));
+        }, LC_CONFIG.TIMEOUT_MS);
+        cbs[name] = (res) => {
+          done();
+          res && res.ok ? resolve(res.data) : reject(new Error("api"));
+        };
+        s.onerror = () => {
+          done();
+          reject(new Error("network"));
+        };
+        const q = new URLSearchParams(
+          Object.assign({}, params, { callback: "LichCongTacApp._cb." + name }),
+        );
+        s.src =
+          LC_CONFIG.API_URL +
+          (LC_CONFIG.API_URL.indexOf("?") > -1 ? "&" : "?") +
+          q;
+        document.head.appendChild(s);
+      });
+    }
 
-  function setStatus(text, isError, retry) {
-    ui.status.textContent = text || '';
-    ui.status.className = 'lc-status' + (isError ? ' lc-error' : '');
-    if (retry) { ui.status.appendChild(document.createTextNode(' ')); const b = el('button', 'lc-button', 'Thử lại'); b.type = 'button'; b.onclick = retry; ui.status.appendChild(b); }
-  }
+    function setStatus(text, isError, retry) {
+      ui.status.textContent = text || "";
+      ui.status.className = "lc-status" + (isError ? " lc-error" : "");
+      if (retry) {
+        ui.status.appendChild(document.createTextNode(" "));
+        const b = el("button", "lc-button", "Thử lại");
+        b.type = "button";
+        b.onclick = retry;
+        ui.status.appendChild(b);
+      }
+    }
 
-  // Màu nền theo tổ: nhận diện bằng từ khóa (bỏ dấu, không phân biệt hoa thường). Thêm dòng mới để thêm tổ.
-  // Tổ không có trong danh sách vẫn được tô một màu cố định (tính từ tên), không bị trắng.
-  const TEAM_COLORS = [
-    [/to chuc|hanh chinh|ke toan|tchc/, '#d1e5eb'],   // P.TCHCKT (Phòng Tổ chức - Hành chính - Kế toán)
-    [/thcs|thpt|trung hoc/, '#dbeafe'],               // Tổ THCS-THPT
-    [/\bth\b|tieu hoc/, '#dcfce7'],                   // Tổ TH (Tiểu học)
-    [/giam hieu|\bbgh\b/, '#fef9c3']                  // BGH (Ban Giám hiệu)
-  ];
-  const FALLBACK_COLORS = ['#f3e8ff', '#ffedd5', '#fce7f3', '#cffafe', '#f5e9da'];
-  function teamColor(name) {
-    const t = String(name || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/gi, 'd').toLowerCase().trim();
-    if (!t) return '';
-    for (const [re, color] of TEAM_COLORS) if (re.test(t)) return color;
-    let h = 0; for (let i = 0; i < t.length; i++) h = (h * 31 + t.charCodeAt(i)) >>> 0;
-    return FALLBACK_COLORS[h % FALLBACK_COLORS.length];
-  }
-  function render(d) {
-    ui.result.innerHTML = '';
-    roroot.querySelector('.lc-h').textContent = d.title || 'LỊCH CÔNG TÁC';    // tiêu đề lấy từ CAI_DAT
-    ui.result.appendChild(el('div', 'lc-sub', fmt(d.start) + ' → ' + fmt(d.end) + (d.year ? ' • Năm học ' + d.year : '')));
-    if (!d.items.length) { ui.result.appendChild(el('div', 'lc-empty', 'Không có lịch công tác trong tuần này.')); return; }
-    const wrap = el('div', 'lc-wrap'), table = el('table', 'lc-table'), head = el('tr');
-    ['STT', 'Ngày', 'Thứ', 'Thời gian', 'Nội dung chính', 'Nội dung chi tiết', 'Chủ trì', 'Thành phần', 'Địa điểm', 'Tổ/Bộ phận', 'Ghi chú']
-      .forEach(h => head.appendChild(el('th', '', h)));
-    const thead = el('thead'); thead.appendChild(head); table.appendChild(thead);
-    const tb = el('tbody'); let prev = '';
-    d.items.forEach((it, i) => {
-      const tr = el('tr', it.date !== prev && i ? 'lc-newday' : ''); prev = it.date;
-      const bg = teamColor(it.dept); if (bg) tr.style.setProperty('--lc-bg', bg);
-      [i + 1, fmt(it.date), it.dow, it.time, it.title, it.detail, it.chair, it.attendees, it.place, it.dept, it.note]
-        .forEach((v, c) => tr.appendChild(el('td', c < 4 ? 'lc-nowrap' : '', v)));
-      tb.appendChild(tr);
-    });
-    table.appendChild(tb); wrap.appendChild(table); ui.result.appendChild(wrap);
-  }
+    // Màu nền theo tổ: nhận diện bằng từ khóa (bỏ dấu, không phân biệt hoa thường). Thêm dòng mới để thêm tổ.
+    // Tổ không có trong danh sách vẫn được tô một màu cố định (tính từ tên), không bị trắng.
+    const TEAM_COLORS = [
+      [/to chuc|hanh chinh|ke toan|tchc/, "#d1e5eb"], // P.TCHCKT (Phòng Tổ chức - Hành chính - Kế toán)
+      [/thcs|thpt|trung hoc/, "#dbeafe"], // Tổ THCS-THPT
+      [/\bth\b|tieu hoc/, "#dcfce7"], // Tổ TH (Tiểu học)
+      [/giam hieu|\bbgh\b/, "#fef9c3"], // BGH (Ban Giám hiệu)
+    ];
+    const FALLBACK_COLORS = [
+      "#f3e8ff",
+      "#cffafe",
+      "#fae8ff",
+      "#ecfccb",
+      "#e0e7ff",
+      "#ffe4e6",
+    ];
+    function teamColor(name) {
+      const t = String(name || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/đ/gi, "d")
+        .toLowerCase()
+        .trim();
+      if (!t) return "";
+      for (const [re, color] of TEAM_COLORS) if (re.test(t)) return color;
+      let h = 0;
+      for (let i = 0; i < t.length; i++) h = (h * 31 + t.charCodeAt(i)) >>> 0;
+      return FALLBACK_COLORS[h % FALLBACK_COLORS.length];
+    }
 
-  // Tuần hiện tại do backend xác định từ TUAN_HOC (giờ Việt Nam)
-  async function loadCurrent() {
-    if (/^DÁN_/.test(LC_CONFIG.API_URL)) { setStatus('Chưa cấu hình API_URL.', true); return; }
-    ui.result.innerHTML = ''; setStatus('Đang tải dữ liệu...');
-    try {
-      const d = await api({ action: 'getCurrentWeek' });
-      if (!d || !Array.isArray(d.items) || !/^\d{4}-\d{2}-\d{2}$/.test(d.start)) throw new Error('bad');
-      render(d);
-      setStatus((d.items.length ? d.items.length + ' lịch công tác' : '') +
-        (d.updated ? (d.items.length ? ' • ' : '') + 'Cập nhật lần cuối: ' + d.updated : ''));
-    } catch (e) { setStatus('Không thể tải dữ liệu. Vui lòng thử lại.', true, loadCurrent); }
-  }
+    function render(d) {
+      ui.result.innerHTML = "";
+    root.querySelector(".lc-h").textContent = "LỊCH CÔNG TÁC BHS" + (d.week ? " TUẦN " + d.week : "") +  (d.year ? " Năm học " + d.year : "");  // tiêu đề lấy từ CAI_DAT
+      ui.result.appendChild(
+        el(
+          "div",
+          "lc-sub",
+        " Từ " + fmt(d.start) +
+            " Đến " +
+            fmt(d.end) 
+            //+
+          //  (d.year ? " • Năm học " + d.year : ""),
+        ),
+      );
+      if (!d.items.length) {
+        ui.result.appendChild(
+          el("div", "lc-empty", "Không có lịch công tác trong tuần này."),
+        );
+        return;
+      }
+      const wrap = el("div", "lc-wrap"),
+        table = el("table", "lc-table"),
+        head = el("tr");
+      [
+        "STT",
+        "Ngày",
+        "Thứ",
+        "Thời gian",
+        "Nội dung chính",
+        "Nội dung chi tiết",
+        "Chủ trì",
+        "Thành phần",
+        "Địa điểm",
+        "Tổ/Bộ phận",
+        "Ghi chú",
+      ].forEach((h) => head.appendChild(el("th", "", h)));
+      const thead = el("thead");
+      thead.appendChild(head);
+      table.appendChild(thead);
+      const tb = el("tbody");
+      let prev = "";
+      d.items.forEach((it, i) => {
+        const tr = el("tr", it.date !== prev && i ? "lc-newday" : "");
+        prev = it.date;
+        const bg = teamColor(it.dept);
+        if (bg) tr.style.setProperty("--lc-bg", bg);
+        [
+          i + 1,
+          fmt(it.date),
+          it.dow,
+          it.time,
+          it.title,
+          it.detail,
+          it.chair,
+          it.attendees,
+          it.place,
+          it.dept,
+          it.note,
+        ].forEach((v, c) =>
+          tr.appendChild(el("td", c < 4 ? "lc-nowrap" : "", v)),
+        );
+        tb.appendChild(tr);
+      });
+      table.appendChild(tb);
+      wrap.appendChild(table);
+      ui.result.appendChild(wrap);
+    }
 
-  Object.assign(window.LichCongTacApp, { init: loadCurrent, loadCurrent });
-  loadCurrent();
-})();
+    // Tuần hiện tại do backend xác định từ TUAN_HOC (giờ Việt Nam)
+    async function loadCurrent() {
+      if (/^DÁN_/.test(LC_CONFIG.API_URL)) {
+        setStatus("Chưa cấu hình API_URL.", true);
+        return;
+      }
+      ui.result.innerHTML = "";
+      setStatus("Đang tải dữ liệu...");
+      try {
+        const d = await api({ action: "getCurrentWeek" });
+        if (
+          !d ||
+          !Array.isArray(d.items) ||
+          !/^\d{4}-\d{2}-\d{2}$/.test(d.start)
+        )
+          throw new Error("bad");
+        render(d);
+        setStatus(
+          (d.items.length ? d.items.length + " lịch công tác" : "") +
+            (d.updated
+              ? (d.items.length ? " • " : "") +
+                "Cập nhật lần cuối: " +
+                d.updated
+              : ""),
+        );
+      } catch (e) {
+        setStatus(
+          "Không thể tải dữ liệu. Vui lòng thử lại.",
+          true,
+          loadCurrent,
+        );
+      }
+    }
+
+    Object.assign(window.LichCongTacApp, { init: loadCurrent, loadCurrent });
+    loadCurrent();
+  })();
 </script>
