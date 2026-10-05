@@ -1,7 +1,7 @@
 <div id="lc-app">
   <div class="lc-header"><h2 class="lc-h">LỊCH CÔNG TÁC BHS</h2></div>
+    <div class="lc-status" data-lc="status" aria-live="polite"></div>
   <div data-lc="result"></div>
-  <div class="lc-status" data-lc="status" aria-live="polite"></div>
 </div>
 
 <style>
@@ -85,7 +85,7 @@
   }
   function render(d) {
     ui.result.innerHTML = '';
-    root.querySelector('.lc-h').textContent = d.title || 'LỊCH CÔNG TÁC';   // tiêu đề lấy từ CAI_DAT
+    root.querySelector('.lc-h').textContent = 'LỊCH CÔNG TÁC BHS' + (d.week ? ' - TUẦN ' + d.week : '');   // tiêu đề lấy từ CAI_DAT
     ui.result.appendChild(el('div', 'lc-sub', fmt(d.start) + ' → ' + fmt(d.end) + (d.year ? ' • Năm học ' + d.year : '')));
     if (!d.items.length) { ui.result.appendChild(el('div', 'lc-empty', 'Không có lịch công tác trong tuần này.')); return; }
     const wrap = el('div', 'lc-wrap'), table = el('table', 'lc-table'), head = el('tr');
