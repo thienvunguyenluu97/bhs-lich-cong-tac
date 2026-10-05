@@ -232,7 +232,7 @@
 
     function render(d) {
       ui.result.innerHTML = "";
-    root.querySelector(".lc-h").textContent = "LỊCH CÔNG TÁC BHS" + (d.week ? " TUẦN " + d.week : "") +  (d.year ? " Năm học " + d.year : "");  // tiêu đề lấy từ CAI_DAT
+    root.querySelector(".lc-h").textContent = "LỊCH CÔNG TÁC BHS" + (d.week ? " TUẦN " + d.week : "") +  (d.year ? " - NĂM HỌC " + d.year : "");  // tiêu đề lấy từ CAI_DAT
       ui.result.appendChild(
         el(
           "div",
