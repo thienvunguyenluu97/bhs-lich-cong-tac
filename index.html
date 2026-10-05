@@ -70,11 +70,12 @@
   // Màu nền theo tổ: nhận diện bằng từ khóa (bỏ dấu, không phân biệt hoa thường). Thêm dòng mới để thêm tổ.
   // Tổ không có trong danh sách vẫn được tô một màu cố định (tính từ tên), không bị trắng.
   const TEAM_COLORS = [
-    [/hanh chinh|van phong/, '#e2e8f0'], [/\btoan\b/, '#dbeafe'], [/\b(su|dia|lich su|dia ly)\b/, '#ffedd5'],
-    [/\b(van|ngu van)\b/, '#fce7f3'], [/\b(anh|tieng anh|ngoai ngu)\b/, '#dcfce7'], [/giam hieu|\bbgh\b/, '#fef9c3'],
-    [/\bcntt\b|tin hoc/, '#ede9fe'], [/\bcsvc\b|co so vat chat/, '#ccfbf1'], [/\bdoan\b/, '#fee2e2']
+    [/to chuc|hanh chinh|ke toan|tchc/, '#e2e8f0'],   // P.TCHCKT (Phòng Tổ chức - Hành chính - Kế toán)
+    [/thcs|thpt|trung hoc/, '#dbeafe'],               // Tổ THCS-THPT
+    [/\bth\b|tieu hoc/, '#dcfce7'],                   // Tổ TH (Tiểu học)
+    [/giam hieu|\bbgh\b/, '#fef9c3']                  // BGH (Ban Giám hiệu)
   ];
-  const FALLBACK_COLORS = ['#f3e8ff', '#cffafe', '#fae8ff', '#ecfccb', '#e0e7ff', '#ffe4e6'];
+  const FALLBACK_COLORS = ['#f3e8ff', '#ffedd5', '#fce7f3', '#cffafe', '#f5e9da'];
   function teamColor(name) {
     const t = String(name || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/gi, 'd').toLowerCase().trim();
     if (!t) return '';
@@ -82,7 +83,6 @@
     let h = 0; for (let i = 0; i < t.length; i++) h = (h * 31 + t.charCodeAt(i)) >>> 0;
     return FALLBACK_COLORS[h % FALLBACK_COLORS.length];
   }
-
   function render(d) {
     ui.result.innerHTML = '';
     root.querySelector('.lc-h').textContent = d.title || 'LỊCH CÔNG TÁC';   // tiêu đề lấy từ CAI_DAT
