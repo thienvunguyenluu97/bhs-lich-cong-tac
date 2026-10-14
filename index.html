@@ -226,10 +226,13 @@
     // Màu nền theo tổ: nhận diện bằng từ khóa (bỏ dấu, không phân biệt hoa thường). Thêm dòng mới để thêm tổ.
     // Tổ không có trong danh sách vẫn được tô một màu cố định (tính từ tên), không bị trắng.
     const TEAM_COLORS = [
-      [/to chuc|hanh chinh|ke toan|tchc/, "#d1e5eb"], // P.TCHCKT (Phòng Tổ chức - Hành chính - Kế toán)
-      [/thcs|thpt|trung hoc/, "#dbeafe"], // Tổ THCS-THPT
-      [/\bth\b|tieu hoc/, "#dcfce7"], // Tổ TH (Tiểu học)
-      [/giam hieu|\bbgh\b/, "#fef9c3"], // BGH (Ban Giám hiệu)
+      [/tc-hc|tchc|to chuc|hanh chinh|ke toan/, "#d1e5eb"], // P.TC-HC-KT
+  [/giam hieu|\bbgh\b/, "#fef9c3"],                      // BGH
+  [/toan/, "#dbeafe"],                                   // Tổ Toán tin
+  [/khxh|xa hoi/, "#fde7d3"],                            // Tổ KHXH
+  [/khtn|tu nhien/, "#e0e7ff"],                          // Tổ KHTN
+  [/tieng anh/, "#ffe4e6"],                              // Tổ Tiếng Anh
+  [/tieu hoc|\bth\b/, "#dcfce7"],                        // Tổ Tiểu Học
     ];
     const FALLBACK_COLORS = [
       "#f3e8ff",
